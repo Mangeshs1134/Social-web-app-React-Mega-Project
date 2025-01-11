@@ -51,17 +51,22 @@ function SignUp() {
                 <form onSubmit={handleSubmit(create)}>
                     <div>
                         <Input
-                        label="Name : "
+                        label="FullName : "
                         placeholder="full name"
-                        {...register, {required:true}}
+                        {...register('name',{required:true})}
                         />
+                         {/* <Input
+                        label="Full Name: "
+                        placeholder="Enter your full name"
+                        {...register("name", {required: true,})}
+                        /> */}
                     <Input
-                    label='Email : '
+                    label='Email :'
                     placeHolder='Enter your Email'
                     type = 'email'
                     {...register("email", {required:true, })}
-                    // regex for email pattern
                     />
+                    // regex for email pattern
                     <Input
                     label='Password : '
                     placeHolder='Enter your Password'

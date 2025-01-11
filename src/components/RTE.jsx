@@ -1,6 +1,6 @@
 import React from 'react'
 import {Editor} from '@tinymce/tinymce-react'
-import { useForm, Controller, SubmitHandler } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 
 
 const RTE = ({name, control, label, defaultValue=''}) => {
