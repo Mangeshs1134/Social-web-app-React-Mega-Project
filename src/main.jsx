@@ -9,8 +9,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-// import AuthLayout, { SignUp } from "./components/index.js";
-// import AuthLayout from "./components/index.js";
 import AuthLayout from "./components/AuthLayout.jsx";
 import  Home  from "./pages/Home.jsx";
 import AllPosts from './pages/AllPost.jsx'
@@ -84,7 +82,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
-      <App />
+      {/* <App /> */}
     </Provider>
   </StrictMode>
 );

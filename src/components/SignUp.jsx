@@ -7,12 +7,16 @@ import authService from '../appwrite/auth'
 import {useForm} from 'react-hook-form'
 
 function SignUp() {
+    console.log('signUp');
+    
         const navigate = useNavigate()
         const dispatch = useDispatch()
         const {register, handleSubmit}= useForm()
         const [error, setError] = useState('')
 
         const create = async (data)=>{
+            console.log(data);
+            
             setError("")
             try {
                 const session = await authService.createAccount(data)
@@ -20,7 +24,7 @@ function SignUp() {
                     const userData = await authService.getCurrentUser()
                     if (userData) {
                         dispatch(authLogin(userData))
-                        navigate('/')
+                        navigate("/")
                         
                     }
                     
@@ -55,18 +59,13 @@ function SignUp() {
                         placeholder="full name"
                         {...register('name',{required:true})}
                         />
-                         {/* <Input
-                        label="Full Name: "
-                        placeholder="Enter your full name"
-                        {...register("name", {required: true,})}
-                        /> */}
                     <Input
                     label='Email :'
                     placeHolder='Enter your Email'
                     type = 'email'
                     {...register("email", {required:true, })}
                     />
-                    // regex for email pattern
+                    {/* // regex for email pattern */}
                     <Input
                     label='Password : '
                     placeHolder='Enter your Password'

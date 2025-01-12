@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login as authLogin } from '../store/authSlice'
@@ -12,9 +13,11 @@ function Login() {
     const {register, handleSubmit}= useForm()
     const [error, setError] = useState('')
 
-    const Login= async (data)=>{
+    const login= async (data)=>{
         setError("")
         try {
+            console.log('okkk')
+        
             const session = await authService.login(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
@@ -49,7 +52,13 @@ function Login() {
         {error && <p className='text-red-700'>
             {error}
             </p>}
-            <form onSubmit={handleSubmit(login)} className='mt-8'>
+            
+            <form 
+            onSubmit={
+                handleSubmit(login)
+            }
+            // onSubmit={console.log('submit')}
+             className='mt-8'>
                 <div className="space-y-5">
                     <Input
                     label='Email : '
@@ -66,11 +75,9 @@ function Login() {
                     // regex for email pattern
                     />
                     <Button
-                    // children='Login'
-                    className='w-full'
-                    type='submit'>
-                        Login
-                    </Button>
+                type="submit"
+                className="w-full"
+                >Sign in</Button>
                 </div>
             </form>
         </div>

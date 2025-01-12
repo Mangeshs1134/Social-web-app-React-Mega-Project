@@ -3,6 +3,7 @@ import { useDispatch} from 'react-redux'
 import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
 import {Header, Footer} from "./components/index"
+import { Outlet } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -40,7 +41,7 @@ function App() {
       <div className="w-full block">
         <Header/>
         <main>
-         Todo : {/* <Outlet/> */}
+         Todo : <Outlet/>
         </main>
         <Footer/>
       </div>

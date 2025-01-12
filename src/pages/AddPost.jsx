@@ -3,6 +3,8 @@ import { Container, PostCard, PostForm } from '../components'
 const AddPost = () => {
   return (
     <div>
+          {console.log('add post')}
+          
         <Container>
             <PostForm/>
         </Container>

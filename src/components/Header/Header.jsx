@@ -30,8 +30,8 @@ function Header() {
       active : authStatus,
     },
     {
-      name : "add post",
-      slug : "/add-posts",
+      name : "add-post",
+      slug : "/add-post",
       active : authStatus,
     },
     
@@ -53,6 +53,7 @@ function Header() {
                 <button onClick={()=> navigate(item.slug)}
                   className='inline-block px-6 py-2 rounded-full duration-200 hover:bg-blue-400'>
                   {item.name}
+                 
                 </button>
               </li>
             ) : null

@@ -10,9 +10,10 @@ export class AuthService{
      constructor(){
         this.client
         .setEndpoint(conf.appwriteUrl)
-        .setProject(conf.appwriteProjectId)
+        .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client)
      }
+     
 
      async createAccount({email, password, name}){
         try {
@@ -33,14 +34,28 @@ export class AuthService{
 
      async login({email, password}){
         try {
-            await this.account.createEmailPasswordSession(email, password);
+            console.log('trying to login');
+            
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
+            console.log('trying to catch');
             throw error
         }
+        finally{
+            console.log('trying to finally');
+
+        }
      }
+     
+    
     async getCurrentUser(){
         try {
-            return  await this.account.get();
+            const user = await this.account.get();
+            // console.log(this.account.get);
+            console.log('used got');
+            
+            return user
+            
         } catch (error) {
             // throw error
             console.log("Appwrite serive :: getCurrentUser :: error", error);

@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function AuthLayout({children , authentication=true}) {
+    console.log('called');
+    
     const navigate= useNavigate()
     const [loader, setloader]= useState(true)
     const authStatus= useSelector((state)=>(state.auth.status))
