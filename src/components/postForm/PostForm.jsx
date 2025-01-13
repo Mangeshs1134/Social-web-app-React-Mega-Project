@@ -10,14 +10,15 @@ const PostForm = ({post}) => {
         defaultValues:{
             title: post?.title || "",
             content: post?.content || "",
-            // tags: post?.tags || [],
-            status: post?.status || 'public',
+            status: post?.status || 'active',
             slug: post?.slug || '',
 
         }
     })
     const navigate = useNavigate()
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector(state => state.auth.userData)
+    console.log(userData);
+    
 
     const submit = async (data) => {
         if(post){
@@ -35,7 +36,7 @@ const PostForm = ({post}) => {
                 navigate(`/post/${dbPost.$id}`)
             }
         }else{
-            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+            const file = await appwriteService.uploadFile(data.image[0])
             if(file){
                 const fileId = file.$id
                 data.featuredImage = fileId
@@ -47,20 +48,20 @@ const PostForm = ({post}) => {
         }
     }
     const slugTransform = useCallback((value)=>{
-        if (value && typeof value === 'string') {
-            return value
-            .trim()
-            .toLowerCase()
-            .replace(/^[a-zA-Z\d\s]+/g, '-')
-            .replace(/\s/g, '-')
-        }
+        if (value && typeof value === 'string')
+        return value
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-zA-Z\d\s]+/g, "-")
+        .replace(/\s/g, "-");
+        
         return ''
     },[])
     
     useEffect(()=>{
         const subscription = watch((value, {name})=>{
             if (name === 'title') {
-                setValue('slug', slugTransform(value.title, {shouldValidate: true}))
+                setValue('slug', slugTransform(value.title), {shouldValidate: true})
                 
             }
         }

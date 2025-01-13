@@ -27,7 +27,7 @@ function App() {
         }
      })
      .finally(()=>{
-      console.log("ok");
+      console.log("finally");
       
       setLoading(false)
      })

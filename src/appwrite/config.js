@@ -97,9 +97,9 @@ export class Service{
         try {
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
-                ID.unique,
-                // document.getElementById('uploader').files[0]
+                ID.unique(),
                 file
+                // document.getElementById('uploader').files[0]
             )
         } catch (error) {
             console.log("Appwrite Service : Upload files Error :: ", error);

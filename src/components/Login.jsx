@@ -14,6 +14,7 @@ function Login() {
     const [error, setError] = useState('')
 
     const login= async (data)=>{
+        console.log('Login function called', data);
         setError("")
         try {
             console.log('okkk')
@@ -75,6 +76,7 @@ function Login() {
                     // regex for email pattern
                     />
                     <Button
+                    // onClick={console.log('submitted')}
                 type="submit"
                 className="w-full"
                 >Sign in</Button>
